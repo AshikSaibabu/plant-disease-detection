@@ -12,6 +12,7 @@ from flask import Flask, redirect, url_for, request, render_template
 from werkzeug.utils import secure_filename
 from gevent.pywsgi import WSGIServer
 
+from const import model_path
 # Define a flask app
 app = Flask(__name__)
 
@@ -20,7 +21,7 @@ app = Flask(__name__)
 # You can also use pretrained model from Keras
 # Check https://keras.io/applications/
 
-model =tf.keras.models.load_model('H:\plant-leaf-detection\modeldetection.h5',compile=False)
+model =tf.keras.models.load_model(model_path, compile=False)
 print('Model loaded. Check http://127.0.0.1:5000/')
 
 
@@ -120,11 +121,9 @@ def get_remedy(ind):
                                 remedy_link.append(link[0]['href'])
         return [remedy,remedy_link]             
        
-                        
-                     
-            
 
-  
+if __name__ == '__main__':
+    app.run()
 
 
 

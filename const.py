@@ -1,0 +1,1 @@
+model_path = "modeldetection.h5"
